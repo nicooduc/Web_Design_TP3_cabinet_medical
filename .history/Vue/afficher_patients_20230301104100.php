@@ -77,18 +77,43 @@ if ($_SESSION["acces"] != 'y') {
                                 }
                                 $data = $_SESSION['data'];
 
-                                foreach ($data as $patient) {
-                                    ?>
-                                    <div class="card">
-                                        <h3>
-                                            <?php echo $patient[2] . ', ' . $patient[1]; ?>
-                                        </h3>
-                                        <p>
-                                            <?php echo 'ID : ' . $patient[0] . ' / Sexe : ' . $patient[3]; ?>
-                                        </p>
-                                    </div>
-                                    <?php
+                                // traitement des données et affichage
+                                //foreach ($data as $patient) {
+                                // afficher chaque patient dans une carte
+                                //}
+                                
+                                echo "<table>";
+                                echo "<tr>
+                                        <th>Id</th>
+                                        <th>Nom</th>
+                                        <th>Prénom</th>
+                                        <th>Sexe</th>
+                                    </tr>";
+
+                                // foreach ($data as $patient) {
+                                //     ? >
+                                //     <div class="card">
+                                //         <h3>
+                                //             <?php    echo $patient[0] . ' ' . $patient[3]; ? >
+                                //         </h3>
+                                //         <p>
+                                //             <?php echo $patient[2] . ', ' . $patient[1]; ? >
+                                //         </p>
+                                //     </div>
+                                //     <?php
+                                // }
+                                // ? >
+                                
+                                while ($row = mysqli_fetch_array($result)) {
+                                echo "<tr>
+                                <td>" . $row[0] . "</td>
+                                <td>" . $row[2] . "</td>
+                                <td>" . $row[1] . "</td>
+                                <td>" . $row[3] . "</td>
+                                </tr>";
                                 }
+                                
+                                echo "</table>";
                                 ?>
                             </form>
                         </div>

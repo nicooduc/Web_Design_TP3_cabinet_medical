@@ -6584,7 +6584,6 @@ ul li{
 .en_bref{
     float: left;
     padding: 10px;
-    width: 95%;
     
 }
 
@@ -6719,15 +6718,15 @@ label{
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   padding: 10px;
   border-radius: 5px;
-  margin-bottom: 10px;
+  width:100%;
 }
 
 .card h3 {
   font-size: 20px;
-  margin: 0;
+  margin-top: 0;
 }
 
 .card p {
   font-size: 14px;
-  margin: 0;
+  margin-bottom: 0;
 }

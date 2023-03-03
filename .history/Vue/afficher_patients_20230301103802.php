@@ -77,18 +77,42 @@ if ($_SESSION["acces"] != 'y') {
                                 }
                                 $data = $_SESSION['data'];
 
+                                // traitement des données et affichage
+                                //foreach ($data as $patient) {
+                                // afficher chaque patient dans une carte
+                                //}
+                                
+                                // echo "<table>";
+                                // echo "<tr>
+                                //         <th>Nom</th>
+                                //         <th>Prénom</th>
+                                //         <th>Date de naissance</th>
+                                //         <th>Sexe</th>
+                                //     </tr>";
+
                                 foreach ($data as $patient) {
                                     ?>
-                                    <div class="card">
+                                    <div class="card" style="card">
                                         <h3>
-                                            <?php echo $patient[2] . ', ' . $patient[1]; ?>
+                                            <?php    echo $patient[0] . ' ' . $patient[3]; ?>
                                         </h3>
                                         <p>
-                                            <?php echo 'ID : ' . $patient[0] . ' / Sexe : ' . $patient[3]; ?>
+                                            <?php echo $patient[2] . ', ' . $patient[1]; ?>
                                         </p>
                                     </div>
                                     <?php
                                 }
+                                // ? >
+                                
+                                // while ($row = mysqli_fetch_array($result)) {
+                                // echo "<tr>
+                                // <td>" . $row['nom_patient'] . "</td>
+                                // <td>" . $row['prenom_patient'] . "</td>
+                                // <td>" . $row['date_naissance_patient'] . "</td>
+                                // </tr>";
+                                // }
+                                
+                                // echo "</table>";
                                 ?>
                             </form>
                         </div>

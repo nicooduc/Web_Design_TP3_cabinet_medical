@@ -79,7 +79,7 @@ if ($_SESSION["acces"] != 'y') {
 
                                 foreach ($data as $patient) {
                                     ?>
-                                    <div class="card">
+                                    <div id="card">
                                         <h3>
                                             <?php echo $patient[2] . ', ' . $patient[1]; ?>
                                         </h3>
