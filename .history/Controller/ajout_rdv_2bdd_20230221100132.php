@@ -5,7 +5,7 @@
     
     $Util = new Util();
     
-    if (isset($_POST["Nom_Patient"]) &&
+    if(isset($_POST["Nom_Patient"]) &&
         isset($_POST["Prenom_Patient"])&&
         isset($_POST["Sexe_Patient"])&&
         isset($_POST["Ville_Patient"])&&
@@ -15,7 +15,6 @@
         isset($_POST["Affiliation_Mutuelle_Patient"])&&
         isset($_POST["Date_Creation_Dossier_Patient"])
         )
-        
     {
         
         $Query = "INSERT INTO patient (Nom_Patient,Prenom_Patient, Sexe_Patient, Ville_Patient, Departement_Patient, Date_Naissance_Patient, Situation_Familiale_Patient,Affiliation_Mutuelle,Date_Creation_Dossier) VALUES"

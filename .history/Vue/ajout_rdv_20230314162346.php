@@ -70,15 +70,41 @@ if ($_SESSION["acces"] != 'y') {
                         <div class="en_bref">
                             <form action="../Controller/ajout_rdv_2bdd.php" method="post">
                                 <br />
-                                <label>Date :</label>
-                                <input class="textfield_form" type="text" name="Date_Rendez_Vous" size="50" /><br />
-                                <label>N° de salle :</label>
-                                <input class="textfield_form" type="text" name="Salle_Rendez_Vous" size="50" /><br />
-                                <label>Patient :</label>
-                                <input class="textfield_form" type="text" name="ID_Patient" size="50" />
-                                <label>Médecin :</label>
-                                <input class="textfield_form" type="text" name="Id_Medecin" size="50" /><br />
+                                <label>Nom :</label>
+                                <input class="textfield_form" type="text" name="Nom_Patient" size="50" /><br />
+                                <label>Prénom :</label>
+                                <input class="textfield_form" type="text" name="Prenom_Patient" size="50" /><br />
+                                <label>Sexe :</label>
+                                <input class="textfield_form" type="radio" name="Sexe_Patient" value="Femme" />
+                                Femme
+                                <input class="textfield_form" type="radio" name="Sexe_Patient" value="Homme" />
+                                Homme
                                 <br /><br />
+                                <label>Adresse :</label>
+                                <textarea name="Adresse_Patient"></textarea>
+                                <br />
+                                <label>Ville :</label>
+                                <input class="textfield_form" type="text" name="Ville_Patient" size="50" />
+                                <label>Département :</label>
+                                <input class="textfield_form" type="text" name="Departement_Patient" size="50" /><br />
+                                <label>Date Naissance :</label>
+                                <input type="date" name="Date_Naissance_Patient" />
+                                <br />
+                                <label>Situation familiale :</label>
+                                <input type="radio" name="Situation_Familiale_Patient" value="Celibataire" />
+                                Célibataire
+                                <input type="radio" name="Situation_Familiale_Patient" value="Marie(e)" />
+                                Marié(e)
+                                <br /><br />
+
+                                <label>Affiliation Mutuelle :</label>
+                                <input class="textfield_form" type="text" name="Affiliation_Mutuelle_Patient"
+                                    size="50" /><br />
+                                <label>Date création dossier :</label>
+                                <input type="date" name="Date_Creation_Dossier_Patient" />
+                                <br />
+                                <br /><br />
+
                                 <input type="reset" name="effacer" value="Effacer" />
                                 <input type="submit" name="valider" value="Ajouter" />
                             </form>
@@ -97,7 +123,7 @@ if ($_SESSION["acces"] != 'y') {
                                 <br />
                                 <a href="#"><i class="icon-calendar"></i> Liste des rendez-vous</a>
                                 <hr />
-                                <a href="#"><i class="icon-plus-sign"></i> Ajouter un rendez-vous</a>
+                                <a href="ajout_rdv.php"><i class="icon-plus-sign"></i> Ajouter un rendez-vous</a>
                                 <br />
                                 <a href="ajout_patient.php"><i class="icon-plus"></i> Nouvelle fiche patient</a>
                                 <hr />

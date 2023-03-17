@@ -71,14 +71,15 @@ if ($_SESSION["acces"] != 'y') {
                             <form action="../Controller/ajout_rdv_2bdd.php" method="post">
                                 <br />
                                 <label>Date :</label>
-                                <input class="textfield_form" type="text" name="Date_Rendez_Vous" size="50" /><br />
+                                <input class="textfield_form" type="text" name="Nom_Patient" size="50" /><br />
                                 <label>N° de salle :</label>
-                                <input class="textfield_form" type="text" name="Salle_Rendez_Vous" size="50" /><br />
+                                <input class="textfield_form" type="text" name="Prenom_Patient" size="50" /><br />
                                 <label>Patient :</label>
-                                <input class="textfield_form" type="text" name="ID_Patient" size="50" />
+                                <input class="textfield_form" type="text" name="Ville_Patient" size="50" />
                                 <label>Médecin :</label>
-                                <input class="textfield_form" type="text" name="Id_Medecin" size="50" /><br />
+                                <input class="textfield_form" type="text" name="Departement_Patient" size="50" /><br />
                                 <br /><br />
+
                                 <input type="reset" name="effacer" value="Effacer" />
                                 <input type="submit" name="valider" value="Ajouter" />
                             </form>
@@ -97,7 +98,7 @@ if ($_SESSION["acces"] != 'y') {
                                 <br />
                                 <a href="#"><i class="icon-calendar"></i> Liste des rendez-vous</a>
                                 <hr />
-                                <a href="#"><i class="icon-plus-sign"></i> Ajouter un rendez-vous</a>
+                                <a href="ajout_rdv.php"><i class="icon-plus-sign"></i> Ajouter un rendez-vous</a>
                                 <br />
                                 <a href="ajout_patient.php"><i class="icon-plus"></i> Nouvelle fiche patient</a>
                                 <hr />

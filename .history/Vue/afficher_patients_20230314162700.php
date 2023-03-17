@@ -1,6 +1,7 @@
 <?php
 
 require('../Controller/Util.php');
+//require('../Controller/afficher_patients_2bdd.php');
 
 
 session_start();
@@ -62,25 +63,33 @@ if ($_SESSION["acces"] != 'y') {
                     </div>
                     <div class="Left-body">
                         <div class="Left-body-head">
-                            Ajouter un nouveau rendez-vous
+                            Liste des patients
                         </div>
                         <div class="infos">
 
                         </div>
                         <div class="en_bref">
-                            <form action="../Controller/ajout_rdv_2bdd.php" method="post">
-                                <br />
-                                <label>Date :</label>
-                                <input class="textfield_form" type="text" name="Date_Rendez_Vous" size="50" /><br />
-                                <label>N° de salle :</label>
-                                <input class="textfield_form" type="text" name="Salle_Rendez_Vous" size="50" /><br />
-                                <label>Patient :</label>
-                                <input class="textfield_form" type="text" name="ID_Patient" size="50" />
-                                <label>Médecin :</label>
-                                <input class="textfield_form" type="text" name="Id_Medecin" size="50" /><br />
-                                <br /><br />
-                                <input type="reset" name="effacer" value="Effacer" />
-                                <input type="submit" name="valider" value="Ajouter" />
+                            <form action="../Controller/afficher_patients_2bdd.php" method="get">
+                                <?php
+
+                                if (session_status() == PHP_SESSION_NONE) {
+                                    session_start();
+                                }
+                                $data = $_SESSION['data'];
+
+                                foreach ($data as $patient) {
+                                    ?>
+                                    <div class="card">
+                                        <h3>
+                                            <?php echo $patient[2] . ', ' . $patient[1]; ?>
+                                        </h3>
+                                        <p>
+                                            <?php echo 'ID : ' . $patient[0] . ' / Sexe : ' . $patient[3]; ?>
+                                        </p>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
                             </form>
                         </div>
 
@@ -93,7 +102,7 @@ if ($_SESSION["acces"] != 'y') {
                             </div>
                             <div class="Social-NW-body">
 
-                                <a href="afficher_patients.php"><i class="icon-user"></i> Liste des patients</a>
+                                <a href="#"><i class="icon-user"></i> Liste des patients</a>
                                 <br />
                                 <a href="#"><i class="icon-calendar"></i> Liste des rendez-vous</a>
                                 <hr />

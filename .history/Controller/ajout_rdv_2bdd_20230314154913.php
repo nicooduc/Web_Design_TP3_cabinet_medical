@@ -31,7 +31,6 @@
                 echo "Error: " . $Query . "<br/>" . $Util->mysqli->error;
             }
         }
-    
     }
 
 ?>
