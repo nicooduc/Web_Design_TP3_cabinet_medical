@@ -7,27 +7,30 @@
  *
  * @author Amin
  */
-class Secretaire {
-    
+class Secretaire
+{
+
     /**
      * Attributs
      */
     public $Id_Secretaire;
     public $Nom_Secretaire;
     public $Prenom_Secretaire;
-    
+
     /**
      * 
      */
-    public function __construct() {
-        
+    public function __construct()
+    {
+
     }
 
     /**
      * 
      * @return type
      */
-    public function getId_Secretaire() {
+    public function getId_Secretaire()
+    {
         return $this->Id_Secretaire;
     }
 
@@ -35,7 +38,8 @@ class Secretaire {
      * 
      * @return type
      */
-    public function getNom_Secretaire() {
+    public function getNom_Secretaire()
+    {
         return $this->Nom_Secretaire;
     }
 
@@ -43,7 +47,8 @@ class Secretaire {
      * 
      * @return type
      */
-    public function getPrenom_Secretaire() {
+    public function getPrenom_Secretaire()
+    {
         return $this->Prenom_Secretaire;
     }
 
@@ -51,7 +56,8 @@ class Secretaire {
      * 
      * @param type $Id_Secretaire
      */
-    public function setId_Secretaire($Id_Secretaire) {
+    public function setId_Secretaire($Id_Secretaire)
+    {
         $this->Id_Secretaire = $Id_Secretaire;
     }
 
@@ -59,7 +65,8 @@ class Secretaire {
      * 
      * @param type $Nom_Secretaire
      */
-    public function setNom_Secretaire($Nom_Secretaire) {
+    public function setNom_Secretaire($Nom_Secretaire)
+    {
         $this->Nom_Secretaire = $Nom_Secretaire;
     }
 
@@ -67,7 +74,8 @@ class Secretaire {
      * 
      * @param type $Prenom_Secretaire
      */
-    public function setPrenom_Secretaire($Prenom_Secretaire) {
+    public function setPrenom_Secretaire($Prenom_Secretaire)
+    {
         $this->Prenom_Secretaire = $Prenom_Secretaire;
     }
 

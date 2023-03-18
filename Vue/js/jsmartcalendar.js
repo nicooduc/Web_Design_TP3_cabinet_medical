@@ -2,88 +2,88 @@ var __jscPopupEmpty = null;
 
 // Options __jscPopupOptions
 var __jscPopupOptions =
-        {
-            popupStyleId: '__jsmartcalendar-popup-id',
-            popupStyleClass: '__jsmartcalendar-popup-class',
-            popupInnerContentStyleClass: '__jsmartcalendar-popup-inner-class',
-            popupFormNewStyleClass: '__jsmartcalendar-popup-form-new-class',
-            popupBtnNewStyleClass: '__jsmartcalendar-popup-btn-new-class',
-            popupCellContainerStyleClass: '__jsc-popup-container',
-            //popupCellRootJsonUrl : 'jsmartcalendar-data.json',
-            popupCellRootJsonUrl: 'http://localhost/pfe/web/app_dev.php/evenementdate/',
-            popupFormNewPageUrl: 'jsmartcalendar-new-entry.php'
-        };
+{
+    popupStyleId: '__jsmartcalendar-popup-id',
+    popupStyleClass: '__jsmartcalendar-popup-class',
+    popupInnerContentStyleClass: '__jsmartcalendar-popup-inner-class',
+    popupFormNewStyleClass: '__jsmartcalendar-popup-form-new-class',
+    popupBtnNewStyleClass: '__jsmartcalendar-popup-btn-new-class',
+    popupCellContainerStyleClass: '__jsc-popup-container',
+    //popupCellRootJsonUrl : 'jsmartcalendar-data.json',
+    popupCellRootJsonUrl: 'http://localhost/pfe/web/app_dev.php/evenementdate/',
+    popupFormNewPageUrl: 'jsmartcalendar-new-entry.php'
+};
 
 // Style CSS : __jscPopupCss
 var __jscPopupCss =
-        {
-            'position': 'absolute',
-            'width': '400px',
-            'top': '0',
-            'left': '0',
-            'background-color': 'grey',
-            'z-index': '99',
-            'font-size': '80%'
-        };
+{
+    'position': 'absolute',
+    'width': '400px',
+    'top': '0',
+    'left': '0',
+    'background-color': 'grey',
+    'z-index': '99',
+    'font-size': '80%'
+};
 
 // Style CSS : __jscPopupInnerCss
 var __jscPopupInnerCss =
-        {
-            'position': 'relative',
-            'top': '0',
-            'bottom': '0',
-            'padding': '25px',
-            'margin': '25px',
-            'border': '1px solid gray',
-            'background-color': 'white',
-            'z-index': '99'
-        };
+{
+    'position': 'relative',
+    'top': '0',
+    'bottom': '0',
+    'padding': '25px',
+    'margin': '25px',
+    'border': '1px solid gray',
+    'background-color': 'white',
+    'z-index': '99'
+};
 
 var __jscPopupFormNewCss =
-        {
-            'position': 'relative',
-            'padding': '5px',
-            'margin': '25px',
-            'border': '1px solid gray',
-            'background-color': 'white'
-        };
+{
+    'position': 'relative',
+    'padding': '5px',
+    'margin': '25px',
+    'border': '1px solid gray',
+    'background-color': 'white'
+};
 var __jscPopupBtnNewCss =
-        {
-            'position': 'relative',
-            'padding': '5px',
-            'margin': '5px',
-            'cursor': 'pointer',
-            'border': '1px solid white',
-            'border-radius': '10px',
-            'color': 'white',
-            'text-align': 'center'
-        };
+{
+    'position': 'relative',
+    'padding': '5px',
+    'margin': '5px',
+    'cursor': 'pointer',
+    'border': '1px solid white',
+    'border-radius': '10px',
+    'color': 'white',
+    'text-align': 'center'
+};
 
 var __jscPopupBtnCloseCss =
-        {
-            'position': 'absolute',
-            'top': '0',
-            'right': '0',
-            'cursor': 'pointer',
-            'padding': '2px',
-            'margin': '2px',
-            'border': '1px solid gray',
-            'border-radius': '100px',
-            'background-color': 'white',
-            'text-align': 'center'
-        };
+{
+    'position': 'absolute',
+    'top': '0',
+    'right': '0',
+    'cursor': 'pointer',
+    'padding': '2px',
+    'margin': '2px',
+    'border': '1px solid gray',
+    'border-radius': '100px',
+    'background-color': 'white',
+    'text-align': 'center'
+};
 
 
 // set original default values
 var __jscDefaultOptions =
-        {
-            showToolTipe: true,
-            showNewNoteForm: true,
-            showNotesList: true,
-            newNoteFormAction: '',
-            noteCellColor: 'green',
-            noteCellStyleClass: 'jsmartcalendar'
-        };
+{
+    showToolTipe: true,
+    showNewNoteForm: true,
+    showNotesList: true,
+    newNoteFormAction: '',
+    noteCellColor: 'green',
+    noteCellStyleClass: 'jsmartcalendar'
+};
 // set global values to default;
 var _jscDefaultOptions = __jscDefaultOptions;
 
@@ -114,53 +114,53 @@ function jSmartCalendar(scContainer, scOptions) {
 
     // Set jQuery ui datepicker
     scContainer.datepicker(
-            {
-                beforeShowDay: function(date) {
-                    var dateStr = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
-                    var eDateClassIDCss = scOptions['noteCellStyleClass'] + '-' + dateStr;
-                    var eDateClassCss = scOptions['noteCellStyleClass'] + ' ' + eDateClassIDCss;
-                    setTimeout(function() {
-                        $('.' + eDateClassIDCss).each(function() {
-                            $(this).unbind('click');
-                            $(this).attr('data-jsc_date', dateStr);
-                            $(this).attr('data-jsc_CID', eDateClassIDCss);
-                            var _cellHeight = $(this).height() + 'px';
-                            var _cellWidth = $(this).width() + 'px';
-                            var _elemToClickOn = $('<div/>', {
-                                'class': 'jsc-click-on-over-cell'
-                            });
-                            _elemToClickOn.css({
-                                'display': 'block',
-                                'position': 'absolute',
-                                'height': _cellHeight,
-                                'width': _cellWidth,
-                                'z-index': 10,
-                                'cursor': 'pointer'
-                            });
-
-                            // prepend & bind Click
-                            $(this).prepend(_elemToClickOn);
-                            _jscClickCell(_elemToClickOn);
-
+        {
+            beforeShowDay: function (date) {
+                var dateStr = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+                var eDateClassIDCss = scOptions['noteCellStyleClass'] + '-' + dateStr;
+                var eDateClassCss = scOptions['noteCellStyleClass'] + ' ' + eDateClassIDCss;
+                setTimeout(function () {
+                    $('.' + eDateClassIDCss).each(function () {
+                        $(this).unbind('click');
+                        $(this).attr('data-jsc_date', dateStr);
+                        $(this).attr('data-jsc_CID', eDateClassIDCss);
+                        var _cellHeight = $(this).height() + 'px';
+                        var _cellWidth = $(this).width() + 'px';
+                        var _elemToClickOn = $('<div/>', {
+                            'class': 'jsc-click-on-over-cell'
+                        });
+                        _elemToClickOn.css({
+                            'display': 'block',
+                            'position': 'absolute',
+                            'height': _cellHeight,
+                            'width': _cellWidth,
+                            'z-index': 10,
+                            'cursor': 'pointer'
                         });
 
-                    }, 1000);
-                    return [true, eDateClassCss, ''];
-                }
-            });
+                        // prepend & bind Click
+                        $(this).prepend(_elemToClickOn);
+                        _jscClickCell(_elemToClickOn);
+
+                    });
+
+                }, 1000);
+                return [true, eDateClassCss, ''];
+            }
+        });
 
 }
 function _jscClickCell(jscECell) {
-    jscECell.on('click', function() {
+    jscECell.on('click', function () {
         var eCellNote = $(this);
         var jscCellDate = eCellNote.attr('data-jsc_date');
         var jscCellClassID = eCellNote.attr('data-jsc_CID');
 
         _jscOpenCellPopup(eCellNote);
-//        console.log({
-//            'jscCellDate': jscCellDate,
-//            'jscCellClassID': jscCellClassID
-//        });
+        //        console.log({
+        //            'jscCellDate': jscCellDate,
+        //            'jscCellClassID': jscCellClassID
+        //        });
 
     });
     return false;
@@ -176,13 +176,13 @@ function _jscOpenCellPopup(jscECell) {
         'width': '0',
         'height': '0'
     })
-            .append(__jscPopupEmpty);
+        .append(__jscPopupEmpty);
     __jscPopupEmpty.html('');
-    
+
     //console.log(_jscECellPaprent.attr('data-jsc_date'));
     /* Set popup content */
     var _celleDate = _jscECellPaprent.attr('data-jsc_date');
-    var _celleDateF = _celleDate.replace(new RegExp("\\\-", "g"),'/')
+    var _celleDateF = _celleDate.replace(new RegExp("\\\-", "g"), '/')
     //console.log(_celleDateF);
     _jscBindCellPopupContent(_celleDateF);
 
@@ -220,7 +220,7 @@ function _jscBindCellPopupContent(dateCell) {
         'html': 'ajout note'
     });
     _jscPopupEmpty_ButtonNew.css(__jscPopupBtnNewCss)
-    _jscPopupEmpty_ButtonNew.click(function() {
+    _jscPopupEmpty_ButtonNew.click(function () {
         _jscPopupEmpty_FormNewWrapper.fadeIn(500);
         return false;
     });
@@ -233,7 +233,7 @@ function _jscBindCellPopupContent(dateCell) {
         'title': 'Fermer'
     });
     _jscPopupEmpty_ButtonClose.css(__jscPopupBtnCloseCss);
-    _jscPopupEmpty_ButtonClose.click(function() {
+    _jscPopupEmpty_ButtonClose.click(function () {
         __jscPopupEmpty.fadeOut(500);
         return false;
     });
@@ -241,39 +241,39 @@ function _jscBindCellPopupContent(dateCell) {
 
 
     // Get Json content
-//    $.getJSON(__jscPopupOptions['popupCellRootJsonUrl'], function(data) {
-//        var items = [];
-//
-//        $.each(data, function(key, val) {
-//            var subItems = [];
-//            var subItemTitle = val['title'];
-//            var subItemTitleTrc = subItemTitle;
-//            if (subItemTitle.length > 30) {
-//                subItemTitleTrc = subItemTitle.substr(0, 30) + ' ...';
-//            }
-//            $.each(val, function(subKey, subVal) {
-//                subItems.push('<p class="' + subKey + '">' + subVal + '</p>');
-//            });
-//
-//            var subItemsHtml = $('<div/>', {
-//                'class': 'jsc-note-sub-content',
-//                'html': subItems.join('')
-//            });
-//            items.push('<h3 title="' + subItemTitle + '">' + subItemTitleTrc + '</h3><div class="' + subItemsHtml.attr('class') + '">' + subItemsHtml.html() + '</div>');
-//        });
-//
-//
-//
-//        });
+    //    $.getJSON(__jscPopupOptions['popupCellRootJsonUrl'], function(data) {
+    //        var items = [];
+    //
+    //        $.each(data, function(key, val) {
+    //            var subItems = [];
+    //            var subItemTitle = val['title'];
+    //            var subItemTitleTrc = subItemTitle;
+    //            if (subItemTitle.length > 30) {
+    //                subItemTitleTrc = subItemTitle.substr(0, 30) + ' ...';
+    //            }
+    //            $.each(val, function(subKey, subVal) {
+    //                subItems.push('<p class="' + subKey + '">' + subVal + '</p>');
+    //            });
+    //
+    //            var subItemsHtml = $('<div/>', {
+    //                'class': 'jsc-note-sub-content',
+    //                'html': subItems.join('')
+    //            });
+    //            items.push('<h3 title="' + subItemTitle + '">' + subItemTitleTrc + '</h3><div class="' + subItemsHtml.attr('class') + '">' + subItemsHtml.html() + '</div>');
+    //        });
+    //
+    //
+    //
+    //        });
 
     //getHtmlContent
     var _jsc_note_content = $('<div/>', {
         'class': 'jsc-note-content jsc-with-ui-accordion',
         'html': ''
     });
-    console.log(__jscPopupOptions['popupCellRootJsonUrl']+dateCell);
-    _jsc_note_content.load(__jscPopupOptions['popupCellRootJsonUrl']+dateCell, function() {
-        _jsc_note_content.accordion({heightStyle: 'content'});
+    console.log(__jscPopupOptions['popupCellRootJsonUrl'] + dateCell);
+    _jsc_note_content.load(__jscPopupOptions['popupCellRootJsonUrl'] + dateCell, function () {
+        _jsc_note_content.accordion({ heightStyle: 'content' });
         _jsc_note_content.appendTo(_jscPopupEmpty_Inner);
         /* Show popup content */
         __jscPopupEmpty.draggable();

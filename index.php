@@ -1,3 +1,3 @@
-<?php	
-    header("location: Vue/index.php");
+<?php
+header("location: Vue/index.php");
 ?>

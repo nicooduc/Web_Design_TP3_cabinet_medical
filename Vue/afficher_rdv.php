@@ -96,15 +96,17 @@ if ($_SESSION["acces"] != 'y') {
                                                             echo $patient['Nom_Patient'] . " " . $patient['Prenom_Patient'];
                                                             break;
                                                         }
-                                                    }; ?>
+                                                    }
+                                                    ; ?>
                                                 </td>
                                                 <td>
-                                                <?php foreach ($medecins as $medecin) {
+                                                    <?php foreach ($medecins as $medecin) {
                                                         if ($medecin['Id_Medecin'] == $rdv['Id_Medecin']) {
                                                             echo $medecin['Nom_Medecin'] . " " . $medecin['Prenom_Medecin'];
                                                             break;
                                                         }
-                                                    }; ?>
+                                                    }
+                                                    ; ?>
                                                 </td>
                                             </tr>
                                         <?php } ?>

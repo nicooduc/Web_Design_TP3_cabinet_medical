@@ -78,28 +78,30 @@ if ($_SESSION["acces"] != 'y') {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php while ($rdv = mysqli_fetch_assoc($rdvs)) { 
-                                            if ($rdv['Id_Medecin'] == $Medecin->getId_Medecin()) {?>
-                                            <tr>
-                                                <td>
-                                                    <?php echo $rdv['Id_Rendez_Vous']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $rdv['Date_Rendez_Vous']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $rdv['Salle_Rendez_Vous']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php foreach ($patients as $patient) {
-                                                        if ($patient['Id_Patient'] == $rdv['Id_Patient']) {
-                                                            echo $patient['Nom_Patient'] . " " . $patient['Prenom_Patient'];
-                                                            break;
+                                        <?php while ($rdv = mysqli_fetch_assoc($rdvs)) {
+                                            if ($rdv['Id_Medecin'] == $Medecin->getId_Medecin()) { ?>
+                                                <tr>
+                                                    <td>
+                                                        <?php echo $rdv['Id_Rendez_Vous']; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $rdv['Date_Rendez_Vous']; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $rdv['Salle_Rendez_Vous']; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php foreach ($patients as $patient) {
+                                                            if ($patient['Id_Patient'] == $rdv['Id_Patient']) {
+                                                                echo $patient['Nom_Patient'] . " " . $patient['Prenom_Patient'];
+                                                                break;
+                                                            }
                                                         }
-                                                    }; ?>
-                                                </td>
-                                            </tr>
-                                        <?php }} ?>
+                                                        ; ?>
+                                                    </td>
+                                                </tr>
+                                            <?php }
+                                        } ?>
                                     </tbody>
                                 </table>
                             </form>

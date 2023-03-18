@@ -9,8 +9,9 @@
 
 
 
-class Utilisateur {
-    
+class Utilisateur
+{
+
     /**
      * Attributs
      */
@@ -28,16 +29,18 @@ class Utilisateur {
     /**
      * Default Constructor
      */
-    public function __construct(){
-       $this->Secretaire = new Secretaire();
-       $this->Medecin = new Medecin();
+    public function __construct()
+    {
+        $this->Secretaire = new Secretaire();
+        $this->Medecin = new Medecin();
     }
-    
+
     /**
      * 
      * @return type
      */
-    public function getId_Utilisateur() {
+    public function getId_Utilisateur()
+    {
         return $this->Id_Utilisateur;
     }
 
@@ -45,7 +48,8 @@ class Utilisateur {
      * 
      * @return type
      */
-    public function getLogin() {
+    public function getLogin()
+    {
         return $this->Login;
     }
 
@@ -53,7 +57,8 @@ class Utilisateur {
      * 
      * @return type
      */
-    function getPassword() {
+    function getPassword()
+    {
         return $this->Password;
     }
 
@@ -61,7 +66,8 @@ class Utilisateur {
      * 
      * @return type
      */
-    function getType_Utilisateur() {
+    function getType_Utilisateur()
+    {
         return $this->Type_Utilisateur;
     }
 
@@ -69,7 +75,8 @@ class Utilisateur {
      * 
      * @return type
      */
-    function getLast_Login() {
+    function getLast_Login()
+    {
         return $this->Last_Login;
     }
 
@@ -77,7 +84,8 @@ class Utilisateur {
      * 
      * @return type
      */
-    function getSecretaire() {
+    function getSecretaire()
+    {
         return $this->Secretaire;
     }
 
@@ -85,19 +93,22 @@ class Utilisateur {
      * 
      * @return type
      */
-    function getMedecin() {
+    function getMedecin()
+    {
         return $this->Medecin;
     }
-        
+
     /**
      * 
      * @param type $Id_Utilisateur
      */
-    function setId_Utilisateur($Id_Utilisateur) {
+    function setId_Utilisateur($Id_Utilisateur)
+    {
         $this->Id_Utilisateur = $Id_Utilisateur;
     }
 
-    function setLogin($Login) {
+    function setLogin($Login)
+    {
         $this->Login = $Login;
     }
 
@@ -105,7 +116,8 @@ class Utilisateur {
      * 
      * @param type $Password
      */
-    function setPassword($Password) {
+    function setPassword($Password)
+    {
         $this->Password = $Password;
     }
 
@@ -113,7 +125,8 @@ class Utilisateur {
      * 
      * @param type $Type_Utilisateur
      */
-    function setType_Utilisateur($Type_Utilisateur) {
+    function setType_Utilisateur($Type_Utilisateur)
+    {
         $this->Type_Utilisateur = $Type_Utilisateur;
     }
 
@@ -121,7 +134,8 @@ class Utilisateur {
      * 
      * @param type $Last_Login
      */
-    function setLast_Login($Last_Login) {
+    function setLast_Login($Last_Login)
+    {
         $this->Last_Login = $Last_Login;
     }
 
@@ -129,7 +143,8 @@ class Utilisateur {
      * 
      * @param type $Secretaire
      */
-    function setSecretaire($Secretaire) {
+    function setSecretaire($Secretaire)
+    {
         $this->Secretaire = $Secretaire;
     }
 
@@ -137,11 +152,12 @@ class Utilisateur {
      * 
      * @param type $Medecin
      */
-    function setMedecin($Medecin) {
+    function setMedecin($Medecin)
+    {
         $this->Medecin = $Medecin;
     }
 
 
 
-    
+
 }

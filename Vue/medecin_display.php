@@ -62,7 +62,7 @@ if ($_SESSION["acces"] != 'y') {
                     </div>
                     <div class="Left-body">
                         <div class="Left-body-head">
-                            Liste des rendez-vous à venir
+                            Bienvenue dans votre espace personnel
                         </div>
                         <div class="infos">
 
