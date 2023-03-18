@@ -1,9 +1,9 @@
 <?php
 
-require('../Controller/afficher_rdv_2bdd.php');
+require('../Controller/afficher_patients_2bdd.php');
+
 
 session_start();
-
 /*-- Verification si le formulaire d'authenfication a été bien saisie --*/
 if ($_SESSION["acces"] != 'y') {
     /*-- Redirection vers la page d'authentification --*/
@@ -13,6 +13,7 @@ if ($_SESSION["acces"] != 'y') {
     $Utilisateur = $Util->getUtilisateurById($_SESSION["ID_CONNECTED_USER"]);
     $Medecin = new Medecin();
     $Medecin = $Utilisateur->getMedecin();
+    $Medecin->getId_Medecin();
 }
 
 
@@ -61,47 +62,30 @@ if ($_SESSION["acces"] != 'y') {
                     </div>
                     <div class="Left-body">
                         <div class="Left-body-head">
-                            Liste des rendez-vous
+                            Compte rendu de consultation
                         </div>
                         <div class="infos">
 
                         </div>
                         <div class="en_bref">
-                            <form action="../Controller/afficher_rdv_2bdd.php" method="get">
-                                <table class="afficher-rdv">
-                                    <thead>
-                                        <tr>
-                                            <th>Id_Rdv</th>
-                                            <th>Date</th>
-                                            <th>Salle</th>
-                                            <th>Patient</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php while ($rdv = mysqli_fetch_assoc($rdvs)) { 
-                                            if ($rdv['Id_Medecin'] == $Medecin->getId_Medecin()) {?>
-                                            <tr>
-                                                <td>
-                                                    <?php echo $rdv['Id_Rendez_Vous']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $rdv['Date_Rendez_Vous']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $rdv['Salle_Rendez_Vous']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php foreach ($patients as $patient) {
-                                                        if ($patient['Id_Patient'] == $rdv['Id_Patient']) {
-                                                            echo $patient['Nom_Patient'] . " " . $patient['Prenom_Patient'];
-                                                            break;
-                                                        }
-                                                    }; ?>
-                                                </td>
-                                            </tr>
-                                        <?php }} ?>
-                                    </tbody>
-                                </table>
+                            <form action="../Controller/ajout_consultation_2bdd.php" method="post">
+                                <br />
+                                <label>Date</label>
+                                <input type="date" name="Date_Consultation" />
+                                <label>Patient :</label>
+                                <select name="Id_Patient" class="form-control">
+                                    <?php foreach ($patients as $patient) {
+                                        echo '<option value="' . $patient['Id_Patient'] . '">' . $patient['Nom_Patient'] . ' ' . $patient['Prenom_Patient'] . '</option>';
+                                    }
+                                    ?>
+                                </select>
+                                <label>Compte-rendu :</label>
+                                <textarea name="Compte_rendu"></textarea>
+                                <br /><br />
+                                <input type="hidden" name="Id_Medecin" value="<?php echo $idMedecin; ?>">
+
+                                <input type="reset" name="effacer" value="Effacer" />
+                                <input type="submit" name="valider" value="Ajouter" />
                             </form>
                         </div>
 
@@ -112,13 +96,15 @@ if ($_SESSION["acces"] != 'y') {
                             <div class="Social-NW-head">
 
                             </div>
+                            </div>
                             <div class="Social-NW-body">
 
-                                <a href="ajout_consultation.php"><i class="icon-list"></i> Mes consultations</a>
+                                <a href="#"><i class="icon-list"></i> Mes consultations</a>
                                 <br />
                                 <a href="#"><i class="icon-user"></i> Mes patients</a>
                                 <br />
-                                <a href="#"><i class="icon-calendar"></i> Mes rendez-vous</a>
+                                <a href="medecin_rdv.php
+                                "><i class="icon-calendar"></i> Mes rendez-vous</a>
                                 <hr />
                                 <a href="../Controller/deconnexion.php"><i class="icon-off"></i> Se déconnecter </a>
 
