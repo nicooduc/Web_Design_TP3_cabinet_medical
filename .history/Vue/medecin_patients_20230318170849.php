@@ -1,6 +1,6 @@
 <?php
 
-require('../Controller/afficher_patients_2bdd.php');
+require('../Controller/afficher_rdv_2bdd.php');
 
 session_start();
 
@@ -11,8 +11,8 @@ if ($_SESSION["acces"] != 'y') {
 } else {
     $Util = new Util();
     $Utilisateur = $Util->getUtilisateurById($_SESSION["ID_CONNECTED_USER"]);
-    $Secretaire = new Secretaire();
-    $Secretaire = $Utilisateur->getSecretaire();
+    $Medecin = new Medecin();
+    $Medecin = $Utilisateur->getMedecin();
 }
 
 
@@ -25,7 +25,7 @@ if ($_SESSION["acces"] != 'y') {
     <title>
         <?php
 
-        echo $Secretaire->getNom_Secretaire() . ' ' . $Secretaire->getPrenom_Secretaire();
+        echo $Medecin->getNom_Medecin() . ' ' . $Medecin->getPrenom_Medecin();
         ?>
     </title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css" />
@@ -54,7 +54,7 @@ if ($_SESSION["acces"] != 'y') {
                         <center>
                             <h4>
                                 <?php
-                                echo $Secretaire->getNom_Secretaire() . ' ' . $Secretaire->getPrenom_Secretaire();
+                                echo $Medecin->getNom_Medecin() . ' ' . $Medecin->getPrenom_Medecin();
                                 ?>
                             </h4>
                         </center>
@@ -93,16 +93,13 @@ if ($_SESSION["acces"] != 'y') {
                             </div>
                             <div class="Social-NW-body">
 
-                                <a href="afficher_patients.php"><i class="icon-user"></i> Liste des patients</a>
+                                <a href="#"><i class="icon-list"></i> Mes consultations</a>
                                 <br />
-                                <a href="afficher_rdv.php"><i class="icon-calendar"></i> Liste des rendez-vous</a>
-                                <hr />
-                                <a href="ajout_rdv.php"><i class="icon-plus-sign"></i> Ajouter un rendez-vous</a>
+                                <a href="medecin_patients"><i class="icon-user"></i> Mes patients</a>
                                 <br />
-                                <a href="ajout_patient.php"><i class="icon-plus"></i> Nouvelle fiche patient</a>
+                                <a href="#"><i class="icon-calendar"></i> Mes rendez-vous</a>
                                 <hr />
-                                <a href="../Controller/deconnexion.php"><i class="icon-off"></i> Se
-                                    d&eacute;connecter</a>
+                                <a href="../Controller/deconnexion.php"><i class="icon-off"></i> Se déconnecter </a>
 
                             </div>
                         </div>

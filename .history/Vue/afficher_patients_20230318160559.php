@@ -76,9 +76,6 @@ if ($_SESSION["acces"] != 'y') {
                                         <p>
                                             <?php echo 'ID : ' . $patient['Id_Patient'] . ' / Sexe : ' . $patient['Sexe_Patient']; ?>
                                         </p>
-                                        <p>
-                                            <?php echo 'Adresse : ' . $patient['Adresse_Patient'] . ', ' . $patient['Departement_Patient'] . ' ' . $patient['Ville_Patient']; ?>
-                                        </p>
                                     </div>
                                 <?php } ?>
                             </form>

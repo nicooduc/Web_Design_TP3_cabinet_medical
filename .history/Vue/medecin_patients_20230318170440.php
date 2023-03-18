@@ -11,8 +11,8 @@ if ($_SESSION["acces"] != 'y') {
 } else {
     $Util = new Util();
     $Utilisateur = $Util->getUtilisateurById($_SESSION["ID_CONNECTED_USER"]);
-    $Secretaire = new Secretaire();
-    $Secretaire = $Utilisateur->getSecretaire();
+    $Medecin = new Medecin();
+    $Medecin = $Utilisateur->getMedecin();
 }
 
 
