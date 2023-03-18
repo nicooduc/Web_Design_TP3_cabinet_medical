@@ -2,6 +2,7 @@
 
 require('../Controller/get_data_ajout_rdv_2bdd.php');
 
+
 session_start();
 
 /*-- Verification si le formulaire d'authenfication a été bien saisie --*/
@@ -84,7 +85,7 @@ if ($_SESSION["acces"] != 'y') {
                                 <label>Médecin :</label>
                                 <select name="Id_Medecin" class="form-control">
                                     <?php foreach ($medecins as $medecin) {
-                                        echo '<option value="' . $medecin['Id_Medecin'] . '">' . $medecin['Nom_Medecin'] . ' ' . $medecin['Prenom_Medecin'] . '</option>';
+                                        echo '<option value="' . $medecin['Id_Medecin'] . '">' . $patient['Nom_Medecin'] . ' ' . $patient['Prenom_Medecin'] . '</option>';
                                     }
                                     ?>
                                 </select>

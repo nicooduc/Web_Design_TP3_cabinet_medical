@@ -1,6 +1,10 @@
 <?php
 
-require('../Controller/get_data_ajout_rdv_2bdd.php');
+//require('../Controller/afficher_patients_2bdd.php');
+//require('../Controller/get_data_ajout_rdv_2bdd.php');
+
+spl_autoload_register('autoload');
+
 
 session_start();
 

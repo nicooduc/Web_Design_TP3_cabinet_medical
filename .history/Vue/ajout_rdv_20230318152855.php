@@ -2,6 +2,7 @@
 
 require('../Controller/get_data_ajout_rdv_2bdd.php');
 
+
 session_start();
 
 /*-- Verification si le formulaire d'authenfication a été bien saisie --*/

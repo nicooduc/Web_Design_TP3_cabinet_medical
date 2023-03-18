@@ -1,6 +1,8 @@
 <?php
 
-require('../Controller/get_data_ajout_rdv_2bdd.php');
+require('../Controller/afficher_patients_2bdd.php');
+require('../Controller/afficher_medecins_2bdd.php');
+
 
 session_start();
 
@@ -82,9 +84,9 @@ if ($_SESSION["acces"] != 'y') {
                                 </select>
                                 <!-- <input class="textfield_form" type="text" name="ID_Patient" size="50" /> -->
                                 <label>Médecin :</label>
-                                <select name="Id_Medecin" class="form-control">
-                                    <?php foreach ($medecins as $medecin) {
-                                        echo '<option value="' . $medecin['Id_Medecin'] . '">' . $medecin['Nom_Medecin'] . ' ' . $medecin['Prenom_Medecin'] . '</option>';
+                                <select name="Id_Patient" class="form-control">
+                                    <?php foreach ($patients as $patient) {
+                                        echo '<option value="' . $patient['Id_Patient'] . '">' . $patient['Nom_Patient'] . ' ' . $patient['Prenom_Patient'] . '</option>';
                                     }
                                     ?>
                                 </select>
