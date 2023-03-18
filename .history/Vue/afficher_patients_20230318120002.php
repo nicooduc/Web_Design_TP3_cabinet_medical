@@ -1,7 +1,7 @@
 <?php
 
+//require('../Controller/Util.php');
 require('../Controller/afficher_patients_2bdd.php');
-
 
 session_start();
 
@@ -62,31 +62,23 @@ if ($_SESSION["acces"] != 'y') {
                     </div>
                     <div class="Left-body">
                         <div class="Left-body-head">
-                            Ajouter un nouveau rendez-vous
+                            Liste des patients
                         </div>
                         <div class="infos">
 
                         </div>
                         <div class="en_bref">
-                            <form action="../Controller/ajout_rdv_2bdd.php" method="post">
-                                <br />
-                                <label>Date :</label>
-                                <input class="textfield_form" type="date" name="Date_Rendez_Vous" size="50" /><br />
-                                <label>N° de salle :</label>
-                                <input class="textfield_form" type="text" name="Salle_Rendez_Vous" size="50" /><br />
-                                <label>Patient :</label>
-                                <select name="Id_Patient" class="form-control">
-                                    <?php foreach ($patients as $patient) {
-                                        echo '<option value="' . $patient['Id_Patient'] . '">' . $patient['Nom_Patient'] . ' ' . $patient['Prenom_Patient'] . '</option>';
-                                    }
-                                    ?>
-                                </select>
-                                <!-- <input class="textfield_form" type="text" name="ID_Patient" size="50" /> -->
-                                <label>Médecin :</label>
-                                <input class="textfield_form" type="text" name="Id_Medecin" size="50" /><br />
-                                <br /><br />
-                                <input type="reset" name="effacer" value="Effacer" />
-                                <input type="submit" name="valider" value="Ajouter" />
+                            <form action="../Controller/afficher_patients_2bdd.php" method="get">
+                                <?php while ($patient = mysqli_fetch_assoc($result)) { ?>
+                                    <div class="card">
+                                        <h3>
+                                            <?php echo $patient['Nom_Patient'] . ', ' . $patient['Prenom_Patient']; ?>
+                                        </h3>
+                                        <p>
+                                            <?php echo 'ID : ' . $patient['Id_Patient'] . ' / Sexe : ' . $patient['Sexe_Patient']; ?>
+                                        </p>
+                                    </div>
+                                <?php } ?>
                             </form>
                         </div>
 

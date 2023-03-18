@@ -71,7 +71,7 @@ if ($_SESSION["acces"] != 'y') {
                             <form action="../Controller/ajout_rdv_2bdd.php" method="post">
                                 <br />
                                 <label>Date :</label>
-                                <input class="textfield_form" type="date" name="Date_Rendez_Vous" size="50" /><br />
+                                <input class="textfield_form" type="text" name="Date_Rendez_Vous" size="50" /><br />
                                 <label>N° de salle :</label>
                                 <input class="textfield_form" type="text" name="Salle_Rendez_Vous" size="50" /><br />
                                 <label>Patient :</label>
