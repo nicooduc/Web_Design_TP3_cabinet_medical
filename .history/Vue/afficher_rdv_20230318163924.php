@@ -1,6 +1,6 @@
 <?php
 
-require('../Controller/get_data_ajout_rdv_2bdd.php');
+require('../Controller/afficher_rdv_2bdd.php');
 
 session_start();
 
@@ -33,6 +33,21 @@ if ($_SESSION["acces"] != 'y') {
     <link rel="shortcut icon" href="bootstrap/img/brain_icon_2.ico" />
 </head>
 
+<style>
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+</style>
+
 <body>
     <div class="container">
         <div class="row">
@@ -61,37 +76,55 @@ if ($_SESSION["acces"] != 'y') {
                     </div>
                     <div class="Left-body">
                         <div class="Left-body-head">
-                            Ajouter un nouveau rendez-vous
+                            Liste des patients
                         </div>
                         <div class="infos">
 
                         </div>
                         <div class="en_bref">
-                            <form action="../Controller/ajout_rdv_2bdd.php" method="post">
-                                <br />
-                                <label>Date :</label>
-                                <input class="textfield_form" type="date" name="Date_Rendez_Vous" size="50" /><br />
-                                <label>N° de salle :</label>
-                                <input class="textfield_form" type="text" name="Salle_Rendez_Vous" size="50" /><br />
-                                <label>Patient :</label>
-                                <select name="Id_Patient" class="form-control">
-                                    <?php foreach ($patients as $patient) {
-                                        echo '<option value="' . $patient['Id_Patient'] . '">' . $patient['Nom_Patient'] . ' ' . $patient['Prenom_Patient'] . '</option>';
-                                    }
-                                    ?>
-                                </select>
-                                <!-- <input class="textfield_form" type="text" name="ID_Patient" size="50" /> -->
-                                <label>Médecin :</label>
-                                <select name="Id_Medecin" class="form-control">
-                                    <?php foreach ($medecins as $medecin) {
-                                        echo '<option value="' . $medecin['Id_Medecin'] . '">' . $medecin['Nom_Medecin'] . ' ' . $medecin['Prenom_Medecin'] . '</option>';
-                                    }
-                                    ?>
-                                </select>
-                                <!-- <input class="textfield_form" type="text" name="Id_Medecin" size="50" /><br /> -->
-                                <br /><br />
-                                <input type="reset" name="effacer" value="Effacer" />
-                                <input type="submit" name="valider" value="Ajouter" />
+                            <form action="../Controller/afficher_rdv_2bdd.php" method="get">
+                                <table class="afficher_rdv">
+                                    <thead>
+                                        <tr>
+                                            <th>Id_Rdv</th>
+                                            <th>Date</th>
+                                            <th>Salle</th>
+                                            <th>Patient</th>
+                                            <th>Medecin</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php while ($rdv = mysqli_fetch_assoc($rdvs)) { ?>
+                                            <tr>
+                                                <td>
+                                                    <?php echo $rdv['Id_Rendez_Vous']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $rdv['Date_Rendez_Vous']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $rdv['Salle_Rendez_Vous']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php foreach ($patients as $patient) {
+                                                        if ($patient['Id_Patient'] == $rdv['Id_Patient']) {
+                                                            echo $patient['Nom_Patient'] . " " . $patient['Prenom_Patient'];
+                                                            break;
+                                                        }
+                                                    }; ?>
+                                                </td>
+                                                <td>
+                                                <?php foreach ($medecins as $medecin) {
+                                                        if ($medecin['Id_Medecin'] == $rdv['Id_Medecin']) {
+                                                            echo $medecin['Nom_Medecin'] . " " . $medecin['Prenom_Medecin'];
+                                                            break;
+                                                        }
+                                                    }; ?>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
                             </form>
                         </div>
 
@@ -106,9 +139,9 @@ if ($_SESSION["acces"] != 'y') {
 
                                 <a href="afficher_patients.php"><i class="icon-user"></i> Liste des patients</a>
                                 <br />
-                                <a href="afficher_rdv.php"><i class="icon-calendar"></i> Liste des rendez-vous</a>
+                                <a href="#"><i class="icon-calendar"></i> Liste des rendez-vous</a>
                                 <hr />
-                                <a href="#"><i class="icon-plus-sign"></i> Ajouter un rendez-vous</a>
+                                <a href="ajout_rdv.php"><i class="icon-plus-sign"></i> Ajouter un rendez-vous</a>
                                 <br />
                                 <a href="ajout_patient.php"><i class="icon-plus"></i> Nouvelle fiche patient</a>
                                 <hr />

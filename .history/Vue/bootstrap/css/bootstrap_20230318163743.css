@@ -6732,14 +6732,14 @@ label{
   margin: 0;
 }
 
-.afficher-rdv {
+.afficher_rdv {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
 }
 
-.afficher-rdv th, td {
+.afficher_rdv > th, td {
   padding: 8px;
-  text-align: left;
+  text-align: center;
   border-bottom: 1px solid #ddd;
 }

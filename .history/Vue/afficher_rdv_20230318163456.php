@@ -1,6 +1,6 @@
 <?php
 
-require('../Controller/afficher_patients_2bdd.php');
+require('../Controller/afficher_rdv_2bdd.php');
 
 session_start();
 
@@ -32,6 +32,31 @@ if ($_SESSION["acces"] != 'y') {
     <link rel="stylesheet" href="js/jquery/css/ui-lightness/jquery-ui-1.9.2.custom.css" type="text/css" />
     <link rel="shortcut icon" href="bootstrap/img/brain_icon_2.ico" />
 </head>
+
+<style>
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+</style>
 
 <body>
     <div class="container">
@@ -67,17 +92,49 @@ if ($_SESSION["acces"] != 'y') {
 
                         </div>
                         <div class="en_bref">
-                            <form action="../Controller/afficher_patients_2bdd.php" method="get">
-                                <?php while ($patient = mysqli_fetch_assoc($patients)) { ?>
-                                    <div class="card">
-                                        <h3>
-                                            <?php echo $patient['Nom_Patient'] . ', ' . $patient['Prenom_Patient']; ?>
-                                        </h3>
-                                        <p>
-                                            <?php echo 'ID : ' . $patient['Id_Patient'] . ' / Sexe : ' . $patient['Sexe_Patient']; ?>
-                                        </p>
-                                    </div>
-                                <?php } ?>
+                            <form action="../Controller/afficher_rdv_2bdd.php" method="get">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Id_Rdv</th>
+                                            <th>Date</th>
+                                            <th>Salle</th>
+                                            <th>Patient</th>
+                                            <th>Medecin</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php while ($rdv = mysqli_fetch_assoc($rdvs)) { ?>
+                                            <tr>
+                                                <td>
+                                                    <?php echo $rdv['Id_Rendez_Vous']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $rdv['Date_Rendez_Vous']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $rdv['Salle_Rendez_Vous']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php foreach ($patients as $patient) {
+                                                        if ($patient['Id_Patient'] == $rdv['Id_Patient']) {
+                                                            echo $patient['Nom_Patient'] . " " . $patient['Prenom_Patient'];
+                                                            break;
+                                                        }
+                                                    }; ?>
+                                                </td>
+                                                <td>
+                                                <?php foreach ($medecins as $medecin) {
+                                                        if ($medecin['Id_Medecin'] == $rdv['Id_Medecin']) {
+                                                            echo $medecin['Nom_Medecin'] . " " . $medecin['Prenom_Medecin'];
+                                                            break;
+                                                        }
+                                                    }; ?>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
                             </form>
                         </div>
 
@@ -92,7 +149,7 @@ if ($_SESSION["acces"] != 'y') {
 
                                 <a href="afficher_patients.php"><i class="icon-user"></i> Liste des patients</a>
                                 <br />
-                                <a href="afficher_rdv.php"><i class="icon-calendar"></i> Liste des rendez-vous</a>
+                                <a href="#"><i class="icon-calendar"></i> Liste des rendez-vous</a>
                                 <hr />
                                 <a href="ajout_rdv.php"><i class="icon-plus-sign"></i> Ajouter un rendez-vous</a>
                                 <br />
