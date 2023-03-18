@@ -3,6 +3,7 @@
 //require('../Controller/Util.php');
 require('../Controller/afficher_patients_2bdd.php');
 
+
 session_start();
 
 /*-- Verification si le formulaire d'authenfication a été bien saisie --*/
@@ -69,16 +70,26 @@ if ($_SESSION["acces"] != 'y') {
                         </div>
                         <div class="en_bref">
                             <form action="../Controller/afficher_patients_2bdd.php" method="get">
-                                <?php while ($patient = mysqli_fetch_assoc($result)) { ?>
+                                <?php
+
+                                if (session_status() == PHP_SESSION_NONE) {
+                                    session_start();
+                                }
+                                $data = $_SESSION['data'];
+
+                                foreach ($data as $patient) {
+                                    ?>
                                     <div class="card">
                                         <h3>
-                                            <?php echo $patient['Nom_Patient'] . ', ' . $patient['Prenom_Patient']; ?>
+                                            <?php echo $patient[2] . ', ' . $patient[1]; ?>
                                         </h3>
                                         <p>
-                                            <?php echo 'ID : ' . $patient['Id_Patient'] . ' / Sexe : ' . $patient['Sexe_Patient']; ?>
+                                            <?php echo 'ID : ' . $patient[0] . ' / Sexe : ' . $patient[3]; ?>
                                         </p>
                                     </div>
-                                <?php } ?>
+                                    <?php
+                                }
+                                ?>
                             </form>
                         </div>
 

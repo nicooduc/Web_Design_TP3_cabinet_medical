@@ -13,16 +13,16 @@ if ($Util->mysqli->connect_error) {
     die('Erreur de connexion (' . $Util->mysqli->connect_errno . ')' . $Util->mysqli->connect_error);
 }
 
-// $data = array();
-// while ($row = mysqli_fetch_array($result)) {
-//     $data[] = $row;
-// }
+$data = array();
+while ($row = mysqli_fetch_array($result)) {
+    $data[] = $row;
+}
 
-// $_SESSION['data'] = $data;
+$_SESSION['data'] = $data;
 
-// if (count($data) > 0) {
-//     header("location: ../Vue/afficher_patients.php");
-// } else {
-//     echo "Aucun résultat trouvé.";
-// }
+if (count($data) > 0) {
+    header("location: ../Vue/afficher_patients.php");
+} else {
+    echo "Aucun résultat trouvé.";
+}
 ?>

@@ -1,7 +1,8 @@
 <?php
 
-//require('../Controller/Util.php');
-require('../Controller/afficher_patients_2bdd.php');
+require('../Controller/Util.php');
+//require('../Controller/afficher_patients_2bdd.php');
+
 
 session_start();
 
@@ -68,17 +69,43 @@ if ($_SESSION["acces"] != 'y') {
 
                         </div>
                         <div class="en_bref">
-                            <form action="../Controller/afficher_patients_2bdd.php" method="get">
-                                <?php while ($patient = mysqli_fetch_assoc($result)) { ?>
-                                    <div class="card">
-                                        <h3>
-                                            <?php echo $patient['Nom_Patient'] . ', ' . $patient['Prenom_Patient']; ?>
-                                        </h3>
-                                        <p>
-                                            <?php echo 'ID : ' . $patient['Id_Patient'] . ' / Sexe : ' . $patient['Sexe_Patient']; ?>
-                                        </p>
-                                    </div>
-                                <?php } ?>
+                            
+                            <form action="../Controller/affichage_patient_bdd.php" method="get">
+
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Id_Patient</th>
+                                            <th>Nom</th>
+                                            <th>Prénom</th>
+                                            <th>Sexe</th>
+                                            <th>Adresse</th>
+                                            <th>Ville</th>
+                                            <th>Département</th>
+                                            <th>Date de naissance</th>
+                                            <th>Situation familiale</th>
+                                            <th>Affiliation mutuelle</th>
+                                            <th>Date de création du dossier</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                                            <tr>
+                                                <td><?php echo $row['Id_Patient']; ?></td>
+                                                <td><?php echo $row['Nom_Patient']; ?></td>
+                                                <td><?php echo $row['Prenom_Patient']; ?></td>
+                                                <td><?php echo $row['Sexe_Patient']; ?></td>
+                                                <td><?php echo $row['Adresse_Patient']; ?></td>
+                                                <td><?php echo $row['Ville_Patient']; ?></td>
+                                                <td><?php echo $row['Departement_Patient']; ?></td>
+                                                <td><?php echo $row['Date_Naissance_Patient']; ?></td>
+                                                <td><?php echo $row['Situation_Familiale_Patient']; ?></td>
+                                                <td><?php echo $row['Affiliation_Mutuelle']; ?></td>
+                                                <td><?php echo $row['Date_Creation_Dossier']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
                             </form>
                         </div>
 
