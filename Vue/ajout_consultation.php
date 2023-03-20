@@ -99,7 +99,7 @@ if ($_SESSION["acces"] != 'y') {
                         </div>
                         <div class="Social-NW-body">
 
-                            <a href="#"><i class="icon-list"></i> Mes consultations</a>
+                            <a href="#"><i class="icon-list"></i> Nouvelle consultations</a>
                             <br />
                             <a href="#"><i class="icon-user"></i> Mes patients</a>
                             <br />
