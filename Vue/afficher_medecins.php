@@ -1,7 +1,6 @@
 <?php
 
-require('../Controller/Util.php');
-
+require('../Controller/afficher_medecins_2bdd.php');
 
 session_start();
 
@@ -62,51 +61,23 @@ if ($_SESSION["acces"] != 'y') {
                     </div>
                     <div class="Left-body">
                         <div class="Left-body-head">
-                            Ajouter un nouveau patient
+                            Liste des medecins
                         </div>
                         <div class="infos">
 
                         </div>
                         <div class="en_bref">
-                            <form action="../Controller/ajout_patient_2bdd.php" method="post">
-                                <br />
-                                <label>Nom :</label>
-                                <input class="textfield_form" type="text" name="Nom_Patient" size="50" /><br />
-                                <label>Prénom :</label>
-                                <input class="textfield_form" type="text" name="Prenom_Patient" size="50" /><br />
-                                <label>Sexe :</label>
-                                <input class="textfield_form" type="radio" name="Sexe_Patient" value="Femme" />
-                                Femme
-                                <input class="textfield_form" type="radio" name="Sexe_Patient" value="Homme" />
-                                Homme
-                                <br /><br />
-                                <label>Adresse :</label>
-                                <textarea name="Adresse_Patient"></textarea>
-                                <br />
-                                <label>Ville :</label>
-                                <input class="textfield_form" type="text" name="Ville_Patient" size="50" />
-                                <label>Département :</label>
-                                <input class="textfield_form" type="text" name="Departement_Patient" size="50" /><br />
-                                <label>Date Naissance :</label>
-                                <input type="date" name="Date_Naissance_Patient" />
-                                <br />
-                                <label>Situation familiale :</label>
-                                <input type="radio" name="Situation_Familiale_Patient" value="Celibataire" />
-                                Célibataire
-                                <input type="radio" name="Situation_Familiale_Patient" value="Marie(e)" />
-                                Marié(e)
-                                <br /><br />
-
-                                <label>Affiliation Mutuelle :</label>
-                                <input class="textfield_form" type="text" name="Affiliation_Mutuelle_Patient"
-                                    size="50" /><br />
-                                <label>Date création dossier :</label>
-                                <input type="date" name="Date_Creation_Dossier_Patient" />
-                                <br />
-                                <br /><br />
-
-                                <input type="reset" name="effacer" value="Effacer" />
-                                <input type="submit" name="valider" value="Ajouter" />
+                            <form action="../Controller/afficher_medecins_2bdd.php" method="get">
+                                <?php while ($medecin = mysqli_fetch_assoc($medecins)) { ?>
+                                    <div class="card">
+                                        <h3>
+                                            <?php echo $medecin['Nom_Medecin'] . ', ' . $medecin['Prenom_Medecin']; ?>
+                                        </h3>
+                                        <p>
+                                            <?php echo 'ID : ' . $medecin['Id_Medecin']; ?>
+                                        </p>
+                                    </div>
+                                <?php } ?>
                             </form>
                         </div>
 
@@ -127,7 +98,7 @@ if ($_SESSION["acces"] != 'y') {
                                 <hr />
                                 <a href="ajout_rdv.php"><i class="icon-plus-sign"></i> Ajouter un rendez-vous</a>
                                 <br />
-                                <a href="#"><i class="icon-plus"></i> Nouvelle fiche patient</a>
+                                <a href="ajout_patient.php"><i class="icon-plus"></i> Nouvelle fiche patient</a>
                                 <hr />
                                 <a href="../Controller/deconnexion.php"><i class="icon-off"></i> Se
                                     d&eacute;connecter</a>
