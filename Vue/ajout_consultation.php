@@ -101,8 +101,8 @@ if ($_SESSION["acces"] != 'y') {
 
                             <a href="#"><i class="icon-list"></i> Nouvelle consultations</a>
                             <br />
-                            <a href="#"><i class="icon-user"></i> Mes patients</a>
-                            <br />
+                            <!-- <a href="#"><i class="icon-user"></i> Mes patients</a>
+                            <br /> -->
                             <a href="medecin_rdv.php
                                 "><i class="icon-calendar"></i> Mes rendez-vous</a>
                             <hr />
